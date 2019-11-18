@@ -1,0 +1,7 @@
+<h2>My Alumnus</h2>
+<ul class="">
+  <li *ngFor="let al of alumnus" [class.selected]="al === selectedAlumnus" (click)="onSelect(al)">
+    {{al.name}}
+  </li>
+</ul>
+<app-alumnus-detail [alumnus]="selectedAlumnus"></app-alumnus-detail>
