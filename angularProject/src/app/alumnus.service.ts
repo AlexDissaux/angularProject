@@ -11,4 +11,5 @@ export class AlumnusService {
 
   getAlumnus(): Alumnus[] {
     return MockAlumnus; }
+
 }

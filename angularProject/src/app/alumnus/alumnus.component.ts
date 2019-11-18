@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {MockAlumnus} from '../mock-alumnus';
 import {Alumnus} from '../alumnus';
 import {AlumnusService} from '../alumnus.service';
 
@@ -16,6 +15,7 @@ export class AlumnusComponent implements OnInit {
   constructor(private alumnusService: AlumnusService) { }
 
   ngOnInit() {
+    this.getHeroes();
   }
 
   onSelect(al: Alumnus): void {
