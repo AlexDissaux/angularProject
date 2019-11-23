@@ -5,6 +5,7 @@ import {MockAlumnus} from './mock-alumnus';
 @Injectable({
   providedIn: 'root'
 })
+
 export class AlumnusService {
 
   constructor() { }
