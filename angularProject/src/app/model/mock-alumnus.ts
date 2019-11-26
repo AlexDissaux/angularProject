@@ -1,4 +1,4 @@
-import {Alumnus} from './alumnus';
+import {Alumnus} from './Alumnus';
 
 export const MockAlumnus: Alumnus [] =
   [
