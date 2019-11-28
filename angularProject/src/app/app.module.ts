@@ -5,12 +5,15 @@ import { AppComponent } from './app.component';
 import { AlumnusComponent } from './alumnus/alumnus.component';
 import {FormsModule} from '@angular/forms';
 import { AlumnusDetailComponent } from './alumnus-detail/alumnus-detail.component';
-import { AppRoutingModule } from './app-routing.module';
 import { LoginComponent } from './login/login.component';
 import {RouterModule} from '@angular/router';
+import {AuthGuardGuard} from './service/auth-guard.guard';
+import { AdminComponent } from './admin/admin.component';
+import { HeaderComponent } from './header/header.component';
 
 const Routes = [
-  {path: '', component: AlumnusComponent},
+  {path: '', component: AlumnusComponent, canActivate : [AuthGuardGuard]},
+  {path: 'admin/:id', component: AdminComponent, canActivate : [AuthGuardGuard]},
   {path: 'login', component: LoginComponent}
 ];
 
@@ -19,15 +22,16 @@ const Routes = [
     AppComponent,
     AlumnusComponent,
     AlumnusDetailComponent,
-    LoginComponent
+    LoginComponent,
+    AdminComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule,
     RouterModule.forRoot(Routes)
   ],
-  providers: [],
+  providers: [AuthGuardGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -13,21 +13,22 @@ export class AlumnusService {
 
 
   getAlumnus(): Alumnus[] {
-    return MockAlumnus;
-  }
+    return MockAlumnus; }
+
+  getAlumnusIndex(id: number): number {
+    return this.getAlumnus().findIndex(e => e.id === id); }
 
   changeName(id: number, newName: string): Alumnus {
 
-     const index: number = this.getAlumnus().findIndex(e => e.id === id);
-     this.getAlumnus()[index].name = newName;
+    this.getAlumnus()[this.getAlumnusIndex(id)].name = newName;
 
-     return this.getAlumnus()[index];
+    return this.getAlumnus()[this.getAlumnusIndex(id)];
   }
 
-  add(name: string): Alumnus {
+  add(name: string, promotion: string, option: string, pays: string, entreprise: string, salaire: string): Alumnus {
     // Create new Alumnus
     const highestId: number = this.getAlumnus()[this.getAlumnus().length - 1].id;
-    const newAlumnus: Alumnus = {id: highestId + 1, name};
+    const newAlumnus: Alumnus = {id: highestId + 1, name, promotion, option, pays, entreprise, salaire};
 
     // Insert in Database
     this.getAlumnus().push(newAlumnus);

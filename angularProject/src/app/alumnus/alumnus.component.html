@@ -1,7 +1,12 @@
-<h2>My Alumnus</h2>
-<ul class="">
-  <li *ngFor="let al of alumnus" [class.selected]="al === selectedAlumnus" (click)="onSelect(al)">
+<div class="ui segment" style="margin-top: 10px; margin-bottom: 50px">
+<h2 class="ui header" >All Alumnus</h2>
+</div>
+
+
+<div class="ui grid" >
+  <!--li *ngFor="let al of alumnus" [class.selected]="al === selectedAlumnus" (click)="onSelect(al)">
     {{al.name}}
-  </li>
-</ul>
-<app-alumnus-detail [alumnus]="selectedAlumnus"></app-alumnus-detail>
+  </li-->
+  <app-alumnus-detail *ngFor="let al of alumnus" [alumnus]="al"></app-alumnus-detail>
+</div>
+<!--app-alumnus-detail [alumnus]="selectedAlumnus"></app-alumnus-detail-->

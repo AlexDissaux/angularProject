@@ -6,6 +6,9 @@ import {Observable} from 'rxjs';
   providedIn: 'root'
 })
 
+@Injectable({
+  providedIn: 'root'
+})
 export class AuthGuardGuard implements CanActivate {
 
   constructor(private routes: Router) {
@@ -15,7 +18,8 @@ export class AuthGuardGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
-    if (localStorage.getItem('username') != null) {
+    if (localStorage.getItem('login') != null) {
+      console.log('we pass here');
       return true;
     } else {
       this.routes.navigate(['/login']);

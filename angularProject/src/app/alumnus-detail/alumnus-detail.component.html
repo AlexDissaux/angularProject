@@ -1,8 +1,19 @@
+<div class="ui cards">
+  <div class="card">
+    <div class="content">
+      <div class="header">{{alumnus.name}}</div>
+      <div class="meta"> Option : {{alumnus.option}} </div>
+      <div class="description"> Entreprise : {{alumnus.entreprise}}</div>
+      <div class="description"> Salaire : {{alumnus.salaire}}</div>
+      <div class="description"> Pays : {{alumnus.pays}}</div>
+      <div class="description"> Promotion : {{alumnus.promotion}}</div>
 
-<h2>Selected alumnus</h2>
-
-<div *ngIf="alumnus">
-  <h3>{{alumnus.name}}</h3>
-  <div> {{alumnus.id}}</div>
-  <div> {{alumnus.name}}</div>
+    </div>
+    <div class="extra content">
+      <div class="ui two buttons">
+        <a class="ui basic grey button" [routerLink]="['admin',alumnus.id]">Modifier</a>
+        <div class="ui basic red button">Delete</div>
+      </div>
+    </div>
+  </div>
 </div>

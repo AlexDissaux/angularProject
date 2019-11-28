@@ -1,0 +1,18 @@
+<p>admin works!</p>
+
+<form class="ui form">
+
+  <div class="field" *ngFor="let key of map">
+    <label>{{key}}</label>
+    <input type="text" name="{{key}}" placeholder="{{key}}" value="{{alumnus[key]}}">
+  </div>
+
+
+  <div class="field">
+    <div class="ui checkbox">
+      <input type="checkbox" tabindex="0" class="hidden">
+      <label>Anonymiser mes données</label>
+    </div>
+  </div>
+  <button class="ui button" type="submit">Submit</button>
+</form>
