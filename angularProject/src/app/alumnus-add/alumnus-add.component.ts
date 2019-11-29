@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Alumnus} from '../model/Alumnus';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {AlumnusService} from '../service/alumnus.service';
 
 @Component({
@@ -12,10 +12,9 @@ export class AlumnusAddComponent implements OnInit {
 
   map: string[];
   id: number;
-  newAlumnus: Alumnus;
 
 
-  constructor(private route: ActivatedRoute, private alumnusService: AlumnusService) {
+  constructor(private route: ActivatedRoute, private alumnusService: AlumnusService, private router: Router) {
     this.id = this.alumnusService.generateId();
 
     // get the on a exemple
@@ -26,7 +25,8 @@ export class AlumnusAddComponent implements OnInit {
   }
 
   onClickSubmit(formData) {
-  console.log(formData);
     this.alumnusService.add(formData);
+    this.router.navigate(['']);
+
   }
 }

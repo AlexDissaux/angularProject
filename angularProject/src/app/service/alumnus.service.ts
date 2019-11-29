@@ -7,8 +7,6 @@ import {MockAlumnus} from '../model/mock-alumnus';
 })
 export class AlumnusService {
 
-  mockAlumnus: Alumnus[];
-
   constructor() {}
 
   getAlumnus(): Alumnus[] {
@@ -17,21 +15,11 @@ export class AlumnusService {
   getAlumnusIndex(id: number): number {
     return this.getAlumnus().findIndex(e => e.id === id); }
 
-
-  changeName(id: number, newName: string): Alumnus {
-
-    this.getAlumnus()[this.getAlumnusIndex(id)].name = newName;
-
-    return this.getAlumnus()[this.getAlumnusIndex(id)];
-  }
-
-
-  generateId(): number {
+    generateId(): number {
     return this.getAlumnus().reduce(((acc, val) => (val.id > acc) ? val.id : acc), 0) + 1; }
 
   add(newAlumnus: Alumnus) { // Insert in Database
     this.getAlumnus().push(newAlumnus); }
-
 
   delete(id: number) {
     const index: number = this.getAlumnus().findIndex(e => e.id === id);

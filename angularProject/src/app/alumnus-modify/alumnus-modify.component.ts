@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Alumnus} from '../model/Alumnus';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {AlumnusService} from '../service/alumnus.service';
 
 @Component({
@@ -14,7 +14,7 @@ export class AlumnusModifyComponent implements OnInit {
   map: string[];
   alumnus: Alumnus;
 
-  constructor(private route: ActivatedRoute, private alumnusService: AlumnusService) {
+  constructor(private route: ActivatedRoute, private alumnusService: AlumnusService, private router: Router) {
     const id: string = this.route.snapshot.paramMap.get('id');
 
     this.alumnus = this.alumnusService.getAlumnus()[this.alumnusService.getAlumnusIndex(parseInt(id, 10))];
@@ -28,6 +28,7 @@ export class AlumnusModifyComponent implements OnInit {
   onClickSubmit(formData: Alumnus) {
 
     this.alumnusService.modify(formData);
+    this.router.navigate(['']);
   }
 
 }

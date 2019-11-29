@@ -1,9 +1,10 @@
 <div class="ui secondary pointing menu">
   <a class="active item" href [routerLink]="['/']">Home</a>
-  <a class="item" href [routerLink]="['/admin']">Admin</a>
+  <a class="item" href [routerLink]="['/stats']">Stats</a>
+  <a class="item" href [routerLink]="['/RGPD']">RGPD</a>
 
   <div class="right menu">
-    <a class="ui item">Logout</a>
+    <a class="ui item" (click)="logout()">Logout</a>
   </div>
 </div>
 

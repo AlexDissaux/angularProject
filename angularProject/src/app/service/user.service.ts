@@ -1,7 +1,6 @@
 import {Injectable} from '@angular/core';
 import {MockUser} from '../model/mock-user';
 import {User} from '../model/User';
-import {AlumnusService} from './alumnus.service';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +12,10 @@ export class UserService {
 
   getUser(): User[] {
     return MockUser;
+  }
+
+  checkAdminLogged() {
+    return (localStorage.getItem('login') === 'admin');
   }
 
   checkConnect(login: string, password: string): boolean {
