@@ -4,6 +4,6 @@
 
 
 <div class="ui grid" >
-  <app-alumnus-detail *ngFor="let al of alumnus" [alumnus]="al"></app-alumnus-detail>
+  <app-alumnus-detail *ngFor="let al of alumnus" [alumnus]="al"  ></app-alumnus-detail>
   <button class="ui basic button" href [routerLink]="['add']" *ngIf="userService.checkAdminLogged()"> <i class="icon plus"></i> Add Alumnus </button>
 </div>

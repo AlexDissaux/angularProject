@@ -18,6 +18,11 @@ export class UserService {
     return (localStorage.getItem('login') === 'admin');
   }
 
+  isconnect() {
+    const login = localStorage.getItem('login');
+    return  ((login !== undefined) && (login !== null));
+  }
+
   checkConnect(login: string, password: string): boolean {
 
     const user: User = this.getUser().find(e => e.login === login);

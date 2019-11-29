@@ -12,11 +12,18 @@ export class AlumnusDetailComponent implements OnInit {
 
   @Input() alumnus: Alumnus;
 
-  constructor(private alumnusService: AlumnusService, private userService: UserService) { }
+  constructor(private alumnusService: AlumnusService, private userService: UserService) {
+  }
 
   ngOnInit() {
   }
 
 
+  checkAuthorize(alumnus: Alumnus) {
+    const isUser = (alumnus.name === localStorage.getItem('login'));
+    const isOption = (alumnus.option === localStorage.getItem('login'));
+    const isAdmin = ('admin' === localStorage.getItem('login'));
 
+    return (isUser || isOption || isAdmin);
+  }
 }

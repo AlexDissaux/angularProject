@@ -1,4 +1,4 @@
-<div class="ui cards">
+<div class="ui cards" *ngIf="checkAuthorize(alumnus)">
   <div class="card" style="margin-bottom: 20px">
     <div class="content">
       <div class="header">{{alumnus.name}}</div>

@@ -21,7 +21,7 @@ const Routes = [
   {path: 'add', component: AlumnusAddComponent, canActivate : [AuthGuardGuard]},
   {path: 'modify/:id', component: AlumnusModifyComponent, canActivate : [AuthGuardGuard]},
   {path: 'stats', component: StatsComponent, canActivate : [AuthGuardGuard]},
-  {path: 'RGPD', component: RGPDComponent, canActivate : [AuthGuardGuard]},
+  {path: 'RGPD', component: RGPDComponent},
   {path: 'login', component: LoginComponent}
 ];
 
