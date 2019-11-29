@@ -2,15 +2,10 @@
 
   <div class="field" *ngFor="let key of map">
     <label>{{key}}</label>
-    <input type="text" name="{{key}}" [(ngModel)]="alumnus[key]" placeholder="{{key}}" value="{{alumnus[key]}}">
+    <input *ngIf="(key === 'id')" type="text" name="{{key}}" [(ngModel)]="alumnus[key]" placeholder="{{key}}" value="{{alumnus[key]}}" disabled>
+    <input *ngIf="(key !== 'id')" type="text" name="{{key}}" [(ngModel)]="alumnus[key]" placeholder="{{key}}" value="{{alumnus[key]}}">
   </div>
 
-  <div class="field">
-    <div class="ui checkbox">
-      <input type="checkbox" tabindex="0" class="">
-      <label>Anonymiser mes données</label>
-    </div>
-  </div>
 
-  <button class="ui button" type="submit">Submit</button>
+  <button class="ui button" type="submit">Modify</button>
 </form>

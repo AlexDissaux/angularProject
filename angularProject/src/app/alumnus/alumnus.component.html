@@ -8,5 +8,6 @@
     {{al.name}}
   </li-->
   <app-alumnus-detail *ngFor="let al of alumnus" [alumnus]="al"></app-alumnus-detail>
+  <button class="ui basic button" href [routerLink]="['add']"> <i class="icon plus"></i> Add Alumnus </button>
 </div>
 <!--app-alumnus-detail [alumnus]="selectedAlumnus"></app-alumnus-detail-->

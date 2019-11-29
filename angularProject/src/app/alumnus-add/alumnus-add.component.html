@@ -1,0 +1,11 @@
+<form class="ui form" #form = "ngForm" (ngSubmit)="onClickSubmit(form.value)">
+
+  <div class="field" *ngFor="let key of map">
+    <label>{{key}}</label>
+    <input *ngIf="(key === 'id')" type="text" name="{{key}}" [(ngModel)]="id" placeholder="{{key}}" disabled>
+    <input *ngIf="(key !== 'id')" type="text" name="{{key}}" placeholder="{{key}}" ngModel>
+  </div>
+
+
+  <button class="ui button" type="submit">Add</button>
+</form>

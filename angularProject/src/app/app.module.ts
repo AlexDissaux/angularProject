@@ -11,10 +11,12 @@ import {AuthGuardGuard} from './service/auth-guard.guard';
 import { AdminComponent } from './admin/admin.component';
 import { HeaderComponent } from './header/header.component';
 import { AlumnusModifyComponent } from './alumnus-modify/alumnus-modify.component';
+import { AlumnusAddComponent } from './alumnus-add/alumnus-add.component';
 
 const Routes = [
   {path: '', component: AlumnusComponent, canActivate : [AuthGuardGuard]},
-  {path: 'admin/:id', component: AdminComponent, canActivate : [AuthGuardGuard]},
+  {path: 'admin/', component: AdminComponent, canActivate : [AuthGuardGuard]},
+  {path: 'add', component: AlumnusAddComponent, canActivate : [AuthGuardGuard]},
   {path: 'modify/:id', component: AlumnusModifyComponent, canActivate : [AuthGuardGuard]},
   {path: 'login', component: LoginComponent}
 ];
@@ -27,7 +29,8 @@ const Routes = [
     LoginComponent,
     AdminComponent,
     HeaderComponent,
-    AlumnusModifyComponent
+    AlumnusModifyComponent,
+    AlumnusAddComponent
   ],
   imports: [
     BrowserModule,
