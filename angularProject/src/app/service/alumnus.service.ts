@@ -5,20 +5,18 @@ import {MockAlumnus} from '../model/mock-alumnus';
 @Injectable({
   providedIn: 'root'
 })
-
 export class AlumnusService {
 
-  constructor() {
-  }
+  mockAlumnus: Alumnus[];
 
+  constructor() {}
 
   getAlumnus(): Alumnus[] {
-    return MockAlumnus;
-  }
+    return MockAlumnus; }
 
   getAlumnusIndex(id: number): number {
-    return this.getAlumnus().findIndex(e => e.id === id);
-  }
+    return this.getAlumnus().findIndex(e => e.id === id); }
+
 
   changeName(id: number, newName: string): Alumnus {
 
@@ -27,12 +25,12 @@ export class AlumnusService {
     return this.getAlumnus()[this.getAlumnusIndex(id)];
   }
 
+
   generateId(): number {
     return this.getAlumnus().reduce(((acc, val) => (val.id > acc) ? val.id : acc), 0) + 1; }
 
   add(newAlumnus: Alumnus) { // Insert in Database
-    this.getAlumnus().push(newAlumnus);
-  }
+    this.getAlumnus().push(newAlumnus); }
 
 
   delete(id: number) {
@@ -44,19 +42,6 @@ export class AlumnusService {
     this.delete(alumnus.id);
     this.add(alumnus);
   }
-
-
-  /*  add(name: string, promotion: string, option: string, pays: string, entreprise: string, salaire: string): Alumnus {
-      // Create new Alumnus
-      const highestId: number = this.getAlumnus()[this.getAlumnus().length - 1].id;
-      const newAlumnus: Alumnus = {id: highestId + 1, name, promotion, option, pays, entreprise, salaire};
-
-      // Insert in Database
-      this.getAlumnus().push(newAlumnus);
-
-      // return the new alumnus created
-      return newAlumnus;
-    }*/
 
 
 }

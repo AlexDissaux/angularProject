@@ -1,6 +1,6 @@
 import {Alumnus} from './Alumnus';
 
-export const MockAlumnus: Alumnus [] =
+export let MockAlumnus: Alumnus [] =
   [
     {id : 1, name : 'Jeremy Bernard', option : 'IA', promotion : ' 2017', entreprise : 'Safran', pays : 'France', salaire : '45000'},
     {id : 2, name : 'Marcel Michel', option : 'IA', promotion : ' 2018', entreprise : 'Safran', pays : 'France', salaire : '42000'},

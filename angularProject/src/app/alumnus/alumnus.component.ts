@@ -15,15 +15,17 @@ export class AlumnusComponent implements OnInit {
   constructor(private alumnusService: AlumnusService) { }
 
   ngOnInit() {
-    this.getHeroes();
+    this.getAlumnus();
   }
 
   onSelect(al: Alumnus): void {
     this.selectedAlumnus = al;
   }
 
-  getHeroes(): void {
-    this.alumnus = this.alumnusService.getAlumnus();  }
+  getAlumnus(): void {
+    this.alumnus = this.alumnusService.getAlumnus();
+    console.log(this.alumnus);
+  }
 
 
 }
