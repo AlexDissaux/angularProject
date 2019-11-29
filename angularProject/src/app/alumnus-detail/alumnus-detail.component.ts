@@ -22,6 +22,7 @@ export class AlumnusDetailComponent implements OnInit {
   checkAuthorize(alumnus: Alumnus) {
     const isUser = (alumnus.name === localStorage.getItem('login'));
     const isOption = (alumnus.option === localStorage.getItem('login'));
+    console.log('est ce que : ' + alumnus.option + ' === ' + localStorage.getItem('login') + ' ?  res : ' + isOption);
     const isAdmin = ('admin' === localStorage.getItem('login'));
 
     return (isUser || isOption || isAdmin);

@@ -1,9 +1,15 @@
 <form class="ui form" #form = "ngForm" (ngSubmit)="onClickSubmit(form.value)">
-
+  <script>
+      function myFunction() {
+          alert("taht work");
+          document.getElementById("demo").innerHTML = "Hello World";
+      }
+  </script>
   <div class="field" *ngFor="let key of map">
     <label>{{key}}</label>
     <input *ngIf="(key === 'id')" type="text" name="{{key}}" [(ngModel)]="alumnus[key]" placeholder="{{key}}" value="{{alumnus[key]}}" disabled>
     <input *ngIf="(key !== 'id')" type="text" name="{{key}}" [(ngModel)]="alumnus[key]" placeholder="{{key}}" value="{{alumnus[key]}}">
+    <!--button class="ui button" onclick="this.previousElementSibling.value = '***';">Anonymiser cette donnée</button-->
   </div>
 
 

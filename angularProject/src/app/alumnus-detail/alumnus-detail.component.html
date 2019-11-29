@@ -9,7 +9,7 @@
       <div class="description"> Promotion : {{alumnus.promotion}}</div>
 
     </div>
-    <div class="extra content" *ngIf="userService.checkAdminLogged()">
+    <div class="extra content" >
       <div class="ui two buttons">
         <a class="ui basic grey button" [routerLink]="['modify',alumnus.id]">Modifier</a>
         <div class="ui basic red button" (click)="this.alumnusService.delete(alumnus.id)">Delete</div>
