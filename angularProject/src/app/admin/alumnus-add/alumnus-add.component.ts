@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Alumnus} from '../model/Alumnus';
+import {Alumnus} from '../../model/Alumnus';
 import {ActivatedRoute, Router} from '@angular/router';
-import {AlumnusService} from '../service/alumnus.service';
+import {AlumnusService} from '../../service/alumnus.service';
 
 @Component({
   selector: 'app-alumnus-add',
