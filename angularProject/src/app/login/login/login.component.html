@@ -1,19 +1,19 @@
-<form [formGroup]="checkoutForm" (ngSubmit)="login('checkoutForm.value')" >
+<form [formGroup]="checkoutForm" (ngSubmit)="login(checkoutForm.value)">
 
 
-    <div class="field">
-      <div class="ui left icon input">
-        <i class="user icon"></i>
-        <input id="login" type="text" formControlName="login">
-      </div>
+  <div class="field">
+    <div class="ui left icon input">
+      <i class="user icon"></i>
+      <input id="login" type="text" formControlName="login">
     </div>
-    <div class="field">
-      <div class="ui left icon input">
-        <i class="lock icon"></i>
-        <input id="password" type="password" formControlName="password">
-      </div>
+  </div>
+  <div class="field">
+    <div class="ui left icon input">
+      <i class="lock icon"></i>
+      <input id="password" type="password" formControlName="password">
     </div>
-    <button class="ui fluid large teal submit button" type="submit">Login</button>
+  </div>
+  <button class="ui fluid large teal submit button" type="submit">Login</button>
 
 </form>
 

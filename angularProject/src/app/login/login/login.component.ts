@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
   }
 
   login(data) {
-    console.log('we pass here');
+    console.log('data : ' + data);
 
     this.authenticationService.auth(data.login, data.password);
 

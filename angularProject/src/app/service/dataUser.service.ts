@@ -10,11 +10,12 @@ export class DataUserService {
   constructor() {
   }
 
-  private getAllUser(): User[] {
+  getAllUser(): User[] {
     return MockUser;
   }
 
   getUser(login: string): User {
+    console.log('login hete : ' + login);
     return this.getAllUser().find(e => e.login === login);
 
   }
