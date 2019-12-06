@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Alumnus} from '../../model/Alumnus';
 import {AlumnusService} from '../../service/alumnus.service';
-import {UserService} from '../../service/user.service';
+import {DataUserService} from '../../service/dataUser.service';
 
 @Component({
   selector: 'app-alumnus',
@@ -13,7 +13,7 @@ export class AlumnusComponent implements OnInit {
   alumnus;
   selectedAlumnus: Alumnus;
 
-  constructor(private alumnusService: AlumnusService, private userService: UserService) { }
+  constructor(private alumnusService: AlumnusService, private userService: DataUserService) { }
 
   ngOnInit() {
     this.getAlumnus();

@@ -8,19 +8,15 @@ import { LoginComponent } from './login/login/login.component';
 import {RouterModule} from '@angular/router';
 import {AuthGuardGuard} from './service/auth-guard.guard';
 import { StatsComponent } from './stats/stats.component';
-import { RGPDComponent } from './rgpd/rgpd.component';
-import {AdminModule} from './admin/admin.module';
-import {AlumnusAddComponent} from './admin/alumnus-add/alumnus-add.component';
+import { LoginModule } from './login/login.module';
 
 const Routes = [
-  {path: '', component: AlumnusComponent, canActivate : [AuthGuardGuard]},
-  {path: 'modify/:id', component: AdminModule., canActivate : [AuthGuardGuard]},
-  {path: 'stats', component: StatsComponent, canActivate : [AuthGuardGuard]},
-  {path: 'RGPD', component: RGPDComponent},
-  {path: 'login', component: LoginComponent}
+ // {path: '', component: AlumnusComponent, canActivate : [AuthGuardGuard]},
+  //{path: 'modify/:id', component: AdminModule, canActivate : [AuthGuardGuard]},
+  //{path: 'login', children: [...loginRoutes]}
+  {path: 'login', redirectTo : '/login', pathMatch: 'full' }
 ];
-go to this link for multiple routing
-https://stackoverflow.com/questions/38879529/how-to-route-to-a-module-as-a-child-of-a-module-angular-2-rc-5
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +24,8 @@ https://stackoverflow.com/questions/38879529/how-to-route-to-a-module-as-a-child
   imports: [
     BrowserModule,
     FormsModule,
-    RouterModule.forChild(AlumnusAddComponent)
+    RouterModule.forRoot(Routes, {enableTracing: true}),
+    LoginModule
   ],
   providers: [AuthGuardGuard],
   bootstrap: [AppComponent]

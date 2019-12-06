@@ -1,4 +1,4 @@
-import {Alumnus} from './Alumnus';
+import {Alumnus} from '../model/Alumnus';
 
 export let MockAlumnus: Alumnus [] =
   [

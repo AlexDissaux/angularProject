@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {UserService} from '../../service/user.service';
+import {DataUserService} from '../../service/dataUser.service';
 import {Router} from '@angular/router';
+import {AuthenticationService} from '../services/authentication.service';
+import {ConnectionService} from '../services/connection.service';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +11,7 @@ import {Router} from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private router: Router, private userService: UserService) {
+  constructor(private router: Router, private authenticationService: AuthenticationService, private connectionService: ConnectionService) {
   }
 
   msg = '';
@@ -17,12 +19,11 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  check(login: string, password: string) {
-    if (this.userService.checkConnect(login, password)) {
-      this.router.navigate(['/']).then(r => console.log(r));
-      this.msg = 'login succeeded';
-    } else {
-      this.msg = 'Invalid username or password';
+  login(login: string, password: string) {
+    this.authenticationService.auth(login, password);
+
+    if (!this.connectionService.isConnected) {
+      this.msg = 'Connection failed';
     }
   }
 

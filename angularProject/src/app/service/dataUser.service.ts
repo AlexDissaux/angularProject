@@ -1,20 +1,25 @@
 import {Injectable} from '@angular/core';
-import {MockUser} from '../model/mock-user';
+import {MockUser} from '../Database/mock-user';
 import {User} from '../model/User';
 
 @Injectable({
   providedIn: 'root'
 })
-export class UserService {
+export class DataUserService {
 
   constructor() {
   }
 
-  getUser(): User[] {
+  private getAllUser(): User[] {
     return MockUser;
   }
 
-  checkAdminLogged() {
+  getUser(login: string): User {
+    return this.getAllUser().find(e => e.login === login);
+
+  }
+
+ /* checkAdminLogged() {
     return (localStorage.getItem('login') === 'admin');
   }
 
@@ -33,5 +38,5 @@ export class UserService {
     }
     return loginAccepted;
   }
-
+*/
 }
