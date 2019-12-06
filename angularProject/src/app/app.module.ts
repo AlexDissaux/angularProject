@@ -9,12 +9,13 @@ import {RouterModule} from '@angular/router';
 import {AuthGuardGuard} from './service/auth-guard.guard';
 import { StatsComponent } from './stats/stats.component';
 import { LoginModule } from './login/login.module';
+import {HttpClientModule} from '@angular/common/http';
 
 const Routes = [
  // {path: '', component: AlumnusComponent, canActivate : [AuthGuardGuard]},
   //{path: 'modify/:id', component: AdminModule, canActivate : [AuthGuardGuard]},
   //{path: 'login', children: [...loginRoutes]}
-  {path: 'login', redirectTo : '/login', pathMatch: 'full' }
+  {path: '', redirectTo : '/login', pathMatch: 'full' }
 ];
 
 @NgModule({
@@ -24,8 +25,9 @@ const Routes = [
   imports: [
     BrowserModule,
     FormsModule,
-    RouterModule.forRoot(Routes, {enableTracing: true}),
-    LoginModule
+    RouterModule.forRoot(Routes),
+    LoginModule,
+    HttpClientModule
   ],
   providers: [AuthGuardGuard],
   bootstrap: [AppComponent]

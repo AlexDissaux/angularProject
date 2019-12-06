@@ -1,8 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {DataUserService} from '../../service/dataUser.service';
-import {Router} from '@angular/router';
 import {AuthenticationService} from '../services/authentication.service';
 import {ConnectionService} from '../services/connection.service';
+import {FormBuilder} from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -11,20 +10,35 @@ import {ConnectionService} from '../services/connection.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private router: Router, private authenticationService: AuthenticationService, private connectionService: ConnectionService) {
+  checkoutForm;
+  msg = '';
+
+  constructor(
+    private authenticationService: AuthenticationService,
+    private connectionService: ConnectionService,
+    private formBuilder: FormBuilder) {
+
+    this.checkoutForm = this.formBuilder.group(
+      {
+        login: '',
+        password: ''
+      } );
   }
 
-  msg = '';
 
   ngOnInit() {
   }
 
-  login(login: string, password: string) {
-    this.authenticationService.auth(login, password);
+  login(data) {
+    console.log('we pass here');
+
+    this.authenticationService.auth(data.login, data.password);
 
     if (!this.connectionService.isConnected) {
       this.msg = 'Connection failed';
     }
+    this.msg = 'this.connectionService.isConnected : ' + this.connectionService.isConnected;
+
   }
 
 }

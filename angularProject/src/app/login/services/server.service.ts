@@ -9,6 +9,8 @@ export class ServerService {
   constructor(private dataUser: DataUserService) { }
 
   connect(login: string, password: string) {
-    return (this.dataUser.getUser(login).password === password);
+    const user = this.dataUser.getUser(login);
+    console.log('test : ' + user);
+    return ((user !== undefined) && (user.password === password));
   }
 }
