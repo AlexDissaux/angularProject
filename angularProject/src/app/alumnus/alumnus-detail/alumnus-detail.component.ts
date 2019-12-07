@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Alumnus} from '../../model/Alumnus';
 import {AlumnusService} from '../../service/alumnus.service';
 import {DataUserService} from '../../service/dataUser.service';
+import {ConnectionService} from '../../login/services/connection.service';
 
 @Component({
   selector: 'app-alumnus-detail',
@@ -12,19 +13,18 @@ export class AlumnusDetailComponent implements OnInit {
 
   @Input() alumnus: Alumnus;
 
-  constructor(private alumnusService: AlumnusService, private userService: DataUserService) {
+  constructor(private alumnusService: AlumnusService, private connectionService: ConnectionService) {
   }
 
   ngOnInit() {
   }
 
+  isAuthorized(al: Alumnus) {
+    // User is allowed to see alumnus only if token equals to option or 'admin'
+    return ((al.option === this.connectionService.token) || (this.connectionService.token === 'admin'));
+  }
 
   checkAuthorize(alumnus: Alumnus) {
-    const isUser = (alumnus.name === localStorage.getItem('login'));
-    const isOption = (alumnus.option === localStorage.getItem('login'));
-    console.log('est ce que : ' + alumnus.option + ' === ' + localStorage.getItem('login') + ' ?  res : ' + isOption);
-    const isAdmin = ('admin' === localStorage.getItem('login'));
-
-    return (isUser || isOption || isAdmin);
+    return ((alumnus.name === this.connectionService.token) || this.isAuthorized(alumnus));
   }
 }

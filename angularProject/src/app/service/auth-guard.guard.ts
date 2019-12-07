@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router} from '@angular/router';
 import {Observable} from 'rxjs';
+import {ConnectionService} from '../login/services/connection.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,14 +12,14 @@ import {Observable} from 'rxjs';
 })
 export class AuthGuardGuard implements CanActivate {
 
-  constructor(private routes: Router) {
+  constructor(private routes: Router, private connectionService: ConnectionService) {
   }
 
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
-    if (localStorage.getItem('login') != null) {
+    if (this.connectionService.getConnection()) {
       console.log('loging passed');
       return true;
     } else {

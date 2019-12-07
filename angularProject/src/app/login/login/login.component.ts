@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AuthenticationService} from '../services/authentication.service';
 import {ConnectionService} from '../services/connection.service';
 import {FormBuilder} from '@angular/forms';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -14,9 +15,14 @@ export class LoginComponent implements OnInit {
   msg = '';
 
   constructor(
+    private router: Router,
     private authenticationService: AuthenticationService,
     private connectionService: ConnectionService,
     private formBuilder: FormBuilder) {
+
+    if (connectionService.getConnection()) { // already connected
+      router.navigate(['']);
+    }
 
     this.checkoutForm = this.formBuilder.group(
       {
@@ -30,14 +36,14 @@ export class LoginComponent implements OnInit {
   }
 
   login(data) {
-    console.log('data : ' + data);
 
     this.authenticationService.auth(data.login, data.password);
 
     if (!this.connectionService.isConnected) {
-      this.msg = 'Connection failed';
+      this.msg = 'Connection failed: Identifier or password incorrect';
+    } else {
+      this.router.navigate(['']);
     }
-    this.msg = 'this.connectionService.isConnected : ' + this.connectionService.isConnected;
 
   }
 

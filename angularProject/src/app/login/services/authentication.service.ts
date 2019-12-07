@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {ConnectionService} from './connection.service';
 import {ServerService} from './server.service';
@@ -14,12 +14,15 @@ export class AuthenticationService {
 
   auth(login: string, password: string) {
 
-    this.connection.isConnected = this.serverService.connect(login, password);
+    const connectionSuccessful: boolean = this.serverService.connect(login, password);
 
-    return this.connection.isConnected;
-    //this.connection.token = 'pipeautoken';
+    if (connectionSuccessful) {
+      this.connection.stockConnection(connectionSuccessful);
+      this.connection.token = login;
+    }
+
+    return connectionSuccessful;
   }
-
 
 
 }

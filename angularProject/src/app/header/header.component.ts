@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {DataUserService} from '../service/dataUser.service';
+import {ConnectionService} from '../login/services/connection.service';
 
 @Component({
   selector: 'app-header',
@@ -9,7 +10,7 @@ import {DataUserService} from '../service/dataUser.service';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private router: Router, private userServive: DataUserService) { }
+  constructor(private router: Router, private connectionService: ConnectionService) { }
 
   ngOnInit() {
   }

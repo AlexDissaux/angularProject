@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Alumnus} from '../../model/Alumnus';
 import {AlumnusService} from '../../service/alumnus.service';
 import {DataUserService} from '../../service/dataUser.service';
+import {ConnectionService} from '../../login/services/connection.service';
 
 @Component({
   selector: 'app-alumnus',
@@ -13,7 +14,7 @@ export class AlumnusComponent implements OnInit {
   alumnus;
   selectedAlumnus: Alumnus;
 
-  constructor(private alumnusService: AlumnusService, private userService: DataUserService) { }
+  constructor(private alumnusService: AlumnusService, private connectionService: ConnectionService) { }
 
   ngOnInit() {
     this.getAlumnus();
@@ -25,8 +26,8 @@ export class AlumnusComponent implements OnInit {
 
   getAlumnus(): void {
     this.alumnus = this.alumnusService.getAlumnus();
-    console.log(this.alumnus);
   }
+
 
 
 }
