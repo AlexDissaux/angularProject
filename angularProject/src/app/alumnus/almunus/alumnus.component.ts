@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Alumnus} from '../../model/Alumnus';
 import {AlumnusService} from '../../service/alumnus.service';
 import {DataUserService} from '../../service/dataUser.service';
-import {ConnectionService} from '../../login/services/connection.service';
+import {ConnectionService} from '../../service/connection.service';
 
 @Component({
   selector: 'app-alumnus',
@@ -29,5 +29,7 @@ export class AlumnusComponent implements OnInit {
   }
 
 
-
+  isAuthorized() {
+    return (this.connectionService.getToken() === 'admin');
+  }
 }

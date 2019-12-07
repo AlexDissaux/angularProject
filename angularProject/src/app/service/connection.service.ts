@@ -7,7 +7,6 @@ import {Router} from '@angular/router';
 export class ConnectionService {
 
   isConnected = false;
-  token: string;
 
   constructor(private router: Router) {
     this.isConnected = this.getConnection();
@@ -15,22 +14,21 @@ export class ConnectionService {
 
 
   getConnection() {
-    if (sessionStorage.getItem('connection')) {
-      return JSON.parse(sessionStorage.getItem('connection'));
-    }
-    return this.isConnected;
-  }
+    console.log('sessionStorage.getItem(\'connection\') !== undefined)' + sessionStorage.getItem('connection'));
+    return (sessionStorage.getItem('connection') !== null); }
 
-  stockConnection(tag: boolean) {
-    this.isConnected = tag;
-    sessionStorage.setItem('connection', JSON.stringify(tag));
+  stockConnection(login: string) {
+    this.isConnected = true;
+    sessionStorage.setItem('connection', login);
   }
 
   logout() {
     sessionStorage.removeItem('connection');
     this.isConnected = false;
-    this.token = undefined;
     this.router.navigate(['login']);
   }
 
+  getToken() {
+    return sessionStorage.getItem('connection');
+  }
 }

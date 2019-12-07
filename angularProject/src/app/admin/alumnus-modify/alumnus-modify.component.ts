@@ -30,15 +30,20 @@ export class AlumnusModifyComponent implements OnInit {
     this.map = Object.keys(this.alumnus);
 
     this.checkoutForm = this.formBuilder.group({
-      name: '',
-      address: ''
+      id: this.alumnus.id,
+      name: this.alumnus.name,
+      promotion: this.alumnus.promotion,
+      option: this.alumnus.option,
+      pays: this.alumnus.pays,
+      entreprise: this.alumnus.entreprise,
+      salaire: this.alumnus.salaire
     });
   }
 
   ngOnInit() {
   }
 
-  onClickSubmit(formData: Alumnus) {
+  onClickSubmit(formData) {
 
     this.alumnusService.modify(formData);
     this.router.navigate(['']);

@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, UrlTree, Router} from '@angular/router';
 import {Observable} from 'rxjs';
-import {ConnectionService} from '../login/services/connection.service';
+import {ConnectionService} from './connection.service';
 
 @Injectable({
   providedIn: 'root'
@@ -20,7 +20,6 @@ export class AuthGuardGuard implements CanActivate {
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
 
     if (this.connectionService.getConnection()) {
-      console.log('loging passed');
       return true;
     } else {
       this.routes.navigate(['/login']);

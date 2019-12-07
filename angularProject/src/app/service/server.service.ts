@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {DataUserService} from '../../service/dataUser.service';
+import {DataUserService} from './dataUser.service';
 
 @Injectable({
   providedIn: 'root'

@@ -1,16 +1,22 @@
-<form class="ui form" #form = "ngForm" (ngSubmit)="onClickSubmit(form.value)">
-  <script>
-      function myFunction() {
-          alert("taht work");
-          document.getElementById("demo").innerHTML = "Hello World";
-      }
-  </script>
-  <div class="field" *ngFor="let key of map">
-    <label>{{key}}</label>
-    <input *ngIf="(key === 'id')" type="text" name="{{key}}" [(ngModel)]="alumnus[key]" placeholder="{{key}}" value="{{alumnus[key]}}" disabled>
-    <input *ngIf="(key !== 'id')" type="text" name="{{key}}" [(ngModel)]="alumnus[key]" placeholder="{{key}}" value="{{alumnus[key]}}">
-    <!--button class="ui button" onclick="this.previousElementSibling.value = '***';">Anonymiser cette donnée</button-->
-  </div>
+<form [formGroup]="checkoutForm" (ngSubmit)="onClickSubmit(checkoutForm.value)"  class="ui form" >
+
+    <!--label>{{key}}</label-->
+      <!--input *ngIf="(key === 'id')" type="text" formControlName="{{key}}" value="{{alumnus[key]}}" disabled>
+      <input *ngIf="(key !== 'id')" type="text" formControlName="{{key}}" value="{{alumnus[key]}}"-->
+  <label for="id">id</label>
+  <input id="id" type="text" formControlName="id" disabled>
+  <label for="name">name</label>
+  <input id="name" type="text" formControlName="name" >
+  <label for="promotion">promotion</label>
+  <input id="promotion" type="text" formControlName="promotion" >
+  <label for="option">option</label>
+  <input id="option" type="text" formControlName="option" >
+  <label for="pays">pays</label>
+  <input id="pays" type="text" formControlName="pays" >
+  <label for="entreprise">entreprise</label>
+  <input id="entreprise" type="text" formControlName="entreprise" >
+  <label for="salaire">salaire</label>
+  <input id="salaire" type="text" formControlName="salaire" >     <!--button class="ui button" onclick="this.previousElementSibling.value = '***';">Anonymiser cette donnée</button-->
 
 
   <button class="ui button" type="submit">Modify</button>

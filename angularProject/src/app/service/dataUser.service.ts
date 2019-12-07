@@ -15,10 +15,7 @@ export class DataUserService {
   }
 
   getUser(login: string): User {
-    console.log('login hete : ' + login);
-    return this.getAllUser().find(e => e.login === login);
-
-  }
+    return this.getAllUser().find(e => e.login === login); }
 
  /* checkAdminLogged() {
     return (localStorage.getItem('login') === 'admin');

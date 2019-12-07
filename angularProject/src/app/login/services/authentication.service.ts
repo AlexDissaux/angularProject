@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {ConnectionService} from './connection.service';
-import {ServerService} from './server.service';
+import {ConnectionService} from '../../service/connection.service';
+import {ServerService} from '../../service/server.service';
 
 @Injectable({
   providedIn: 'root'
@@ -17,8 +17,7 @@ export class AuthenticationService {
     const connectionSuccessful: boolean = this.serverService.connect(login, password);
 
     if (connectionSuccessful) {
-      this.connection.stockConnection(connectionSuccessful);
-      this.connection.token = login;
+      this.connection.stockConnection(login);
     }
 
     return connectionSuccessful;
