@@ -1,10 +1,15 @@
-<div class="ui segment" style="margin-top: 10px; margin-bottom: 50px">
+<div class="ui segment margin">
 <h2 class="ui header" >All Alumnus</h2>
 </div>
 
+<div class="ui search margin">
+  <div class="ui icon input">
+    <input class="prompt" type="text" placeholder="Search by name or enterprise" [(ngModel)]="searchValue">
+    <i class="search icon"></i>
+  </div>
+</div>
 
-<div class="ui grid" >
-  <app-alumnus-detail *ngFor="let al of alumnus" [alumnus]="al"  ></app-alumnus-detail>
-  <button class="ui basic button" (click)="addAlmunus()" *ngIf="isAuthorized()"> <i class="icon plus"></i> Add Alumnus </button>
-
+<div class="ui grid margin" >
+  <app-alumnus-detail *ngFor="let al of alumnus | filterAlumnus:searchValue" [alumnus]="al"></app-alumnus-detail>
+  <button class="ui basic button" (click)="addAlumnus()" *ngIf="isAuthorized()"> <i class="icon plus"></i> Add Alumnus </button>
 </div>

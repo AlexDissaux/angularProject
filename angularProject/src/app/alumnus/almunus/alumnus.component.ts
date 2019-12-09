@@ -14,7 +14,7 @@ import {ActionPerformedService} from '../service/actionPerformed.service';
 export class AlumnusComponent implements OnInit {
 
   alumnus;
-  selectedAlumnus: Alumnus;
+  searchValue;
 
   constructor(
     private alumnusService: AlumnusService,
@@ -24,23 +24,14 @@ export class AlumnusComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getAlumnus();
-  }
-
-  onSelect(al: Alumnus): void {
-    this.selectedAlumnus = al;
-  }
-
-  getAlumnus(): void {
     this.alumnus = this.alumnusService.getAlumnus();
   }
-
 
   isAuthorized() {
     return (this.connectionService.getToken() === 'admin');
   }
 
-  addAlmunus() {
+  addAlumnus() {
     this.actionPerformed.enabledAddMode();
     this.router.navigate(['/admin/edit']);
   }
