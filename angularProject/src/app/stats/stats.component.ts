@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import * as CanvasJS from '../../assets/canvasjs.min';
 import {Alumnus} from '../model/Alumnus';
-import {AlumnusService} from '../service/alumnus.service';
+import {AlumnusService} from '../alumnus/service/alumnus.service';
 
 type chartType = Array<{ y: number, label: string }>;
 

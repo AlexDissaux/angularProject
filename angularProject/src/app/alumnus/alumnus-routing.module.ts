@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {AlumnusComponent} from './almunus/alumnus.component';
-import {AuthGuardGuard} from '../service/auth-guard.guard';
+import {AuthGuardGuard} from '../login/services/auth-guard.guard';
 
 
 const AlumnusRoutes: Routes = [

@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
-import {Alumnus} from '../model/Alumnus';
-import {MockAlumnus} from '../Database/mock-alumnus';
+import {Alumnus} from '../../model/Alumnus';
+import {MockAlumnus} from '../../Database/mock-alumnus';
 
 @Injectable({
   providedIn: 'root'
@@ -32,4 +32,7 @@ export class AlumnusService {
   }
 
 
+  findOne(alumnusId: number): Alumnus {
+    return this.getAlumnus().find(e => e.id === alumnusId);
+  }
 }

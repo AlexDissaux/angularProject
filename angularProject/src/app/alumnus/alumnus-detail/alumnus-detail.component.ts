@@ -1,8 +1,10 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Alumnus} from '../../model/Alumnus';
-import {AlumnusService} from '../../service/alumnus.service';
+import {AlumnusService} from '../service/alumnus.service';
 import {DataUserService} from '../../service/dataUser.service';
-import {ConnectionService} from '../../service/connection.service';
+import {ConnectionService} from '../../login/services/connection.service';
+import {ActionPerformedService} from '../service/actionPerformed.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-alumnus-detail',
@@ -13,7 +15,12 @@ export class AlumnusDetailComponent implements OnInit {
 
   @Input() alumnus: Alumnus;
 
-  constructor(private alumnusService: AlumnusService, private connectionService: ConnectionService) {
+  constructor(
+    private alumnusService: AlumnusService,
+    private connectionService: ConnectionService,
+    private actionPerformed: ActionPerformedService,
+    private router: Router
+) {
   }
 
   ngOnInit() {
@@ -26,5 +33,10 @@ export class AlumnusDetailComponent implements OnInit {
 
   checkAuthorize(alumnus: Alumnus) {
     return ((alumnus.name === this.connectionService.getToken()) || this.isAuthorized(alumnus));
+  }
+
+  modifyAlumnus(id: number) {
+    this.actionPerformed.enabledModificationMode(id);
+    this.router.navigate(['admin/edit']);
   }
 }

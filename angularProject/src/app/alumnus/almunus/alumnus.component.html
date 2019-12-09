@@ -5,6 +5,6 @@
 
 <div class="ui grid" >
   <app-alumnus-detail *ngFor="let al of alumnus" [alumnus]="al"  ></app-alumnus-detail>
-  <button class="ui basic button" href [routerLink]="['add']" *ngIf="isAuthorized()"> <i class="icon plus"></i> Add Alumnus </button>
+  <button class="ui basic button" (click)="addAlmunus()" *ngIf="isAuthorized()"> <i class="icon plus"></i> Add Alumnus </button>
 
 </div>

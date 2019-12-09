@@ -1,7 +1,7 @@
 <div class="ui secondary pointing menu">
-  <a *ngIf="this.connectionService.isConnected" class="active item" href [routerLink]="['/']">Home</a>
-  <a *ngIf="this.connectionService.isConnected" class="item" href [routerLink]="['/stats']">Stats</a>
-  <a class="item" href [routerLink]="['/RGPD']">RGPD</a>
+  <a *ngIf="this.connectionService.isConnected" class="active item" routerLink="">Home</a>
+  <a *ngIf="this.connectionService.isConnected" class="item" routerLink="stats">Stats</a>
+  <a class="item" routerLink="RGPD">RGPD</a>
 
   <div class="right menu" *ngIf="this.connectionService.isConnected">
     <a class="ui item" (click)="this.connectionService.logout()">Logout</a>

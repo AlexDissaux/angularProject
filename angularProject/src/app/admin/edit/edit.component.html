@@ -1,4 +1,4 @@
-<form [formGroup]="checkoutForm" (ngSubmit)="onClickSubmit(checkoutForm.value)"  class="ui form" >
+<form [formGroup]="checkoutForm" (ngSubmit)="onclickSubmit(checkoutForm.value)"  class="ui form" >
 
     <!--label>{{key}}</label-->
       <!--input *ngIf="(key === 'id')" type="text" formControlName="{{key}}" value="{{alumnus[key]}}" disabled>
@@ -19,5 +19,5 @@
   <input id="salaire" type="text" formControlName="salaire" >     <!--button class="ui button" onclick="this.previousElementSibling.value = '***';">Anonymiser cette donnée</button-->
 
 
-  <button class="ui button" type="submit">Modify</button>
+  <button  class="ui button" type="submit">{{action}}</button>
 </form>

@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {Alumnus} from '../../model/Alumnus';
-import {AlumnusService} from '../../service/alumnus.service';
+import {AlumnusService} from '../service/alumnus.service';
 import {DataUserService} from '../../service/dataUser.service';
-import {ConnectionService} from '../../service/connection.service';
+import {ConnectionService} from '../../login/services/connection.service';
+import {Router} from '@angular/router';
+import {ActionPerformedService} from '../service/actionPerformed.service';
 
 @Component({
   selector: 'app-alumnus',
@@ -14,7 +16,12 @@ export class AlumnusComponent implements OnInit {
   alumnus;
   selectedAlumnus: Alumnus;
 
-  constructor(private alumnusService: AlumnusService, private connectionService: ConnectionService) { }
+  constructor(
+    private alumnusService: AlumnusService,
+    private connectionService: ConnectionService,
+    private router: Router,
+    private actionPerformed: ActionPerformedService
+  ) { }
 
   ngOnInit() {
     this.getAlumnus();
@@ -31,5 +38,10 @@ export class AlumnusComponent implements OnInit {
 
   isAuthorized() {
     return (this.connectionService.getToken() === 'admin');
+  }
+
+  addAlmunus() {
+    this.actionPerformed.enabledAddMode();
+    this.router.navigate(['/admin/edit']);
   }
 }
