@@ -4,6 +4,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {AlumnusService} from '../../alumnus/service/alumnus.service';
 import {FormBuilder} from '@angular/forms';
 import {ActionPerformedService} from '../../alumnus/service/actionPerformed.service';
+import {DataOptionService} from '../../service/dataOption.service';
 
 @Component({
   selector: 'app-alumnus-modify',
@@ -13,6 +14,7 @@ import {ActionPerformedService} from '../../alumnus/service/actionPerformed.serv
 export class EditComponent implements OnInit {
 
   action: string;
+  options: string[];
   checkoutForm; // Stock form value form Stock builder
 
   constructor(
@@ -20,12 +22,14 @@ export class EditComponent implements OnInit {
     private alumnusService: AlumnusService,
     private router: Router,
     private formBuilder: FormBuilder,
-    private actionPerformed: ActionPerformedService
+    private actionPerformed: ActionPerformedService,
+    private dataOptionService: DataOptionService
   ) {
   }
 
   ngOnInit() {
 
+    this.options = this.dataOptionService.getOptions();
     this.action = this.actionPerformed.getAction();
 
     if (this.action === 'Modify') {

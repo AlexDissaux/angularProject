@@ -14,11 +14,8 @@ import {StatsComponent} from './stats/stats.component';
 import { AdminModule } from './admin/admin.module';
 
 const Routes = [
-  // {path: '', component: AlumnusComponent, canActivate : [AuthGuardGuard]},
   {path: 'RGPD', component: RGPDComponent},
   {path: 'stats', component: StatsComponent, canActivate: [AuthGuardGuard]},
-  // {path: 'login', redirectTo: '/login', pathMatch: 'full', canActivate: [AuthGuardGuard]},
-  // {path: 'admin', redirectTo: '/admin', pathMatch: 'full', canActivate: [AuthGuardGuard]},
   {path: '', redirectTo: '/alumnus', pathMatch: 'full', canActivate: [AuthGuardGuard]}
 ];
 

@@ -1,8 +1,5 @@
 <form [formGroup]="checkoutForm" (ngSubmit)="onclickSubmit(checkoutForm.value)"  class="ui form" >
 
-    <!--label>{{key}}</label-->
-      <!--input *ngIf="(key === 'id')" type="text" formControlName="{{key}}" value="{{alumnus[key]}}" disabled>
-      <input *ngIf="(key !== 'id')" type="text" formControlName="{{key}}" value="{{alumnus[key]}}"-->
   <label for="id">id</label>
   <input id="id" type="text" formControlName="id" disabled>
   <label for="name">name</label>
@@ -10,14 +7,18 @@
   <label for="promotion">promotion</label>
   <input id="promotion" type="text" formControlName="promotion" >
   <label for="option">option</label>
-  <input id="option" type="text" formControlName="option" >
+  <!--input id="option" type="text"-->
+  <select id="option" class="ui dropdown" formControlName="option">
+<!--    <option selected *ngFor="let opt of options" value=opt>{{opt}}</option>-->
+    <option *ngFor="let opt of options" value=opt>{{opt}}</option>
+  </select>
   <label for="pays">pays</label>
   <input id="pays" type="text" formControlName="pays" >
   <label for="entreprise">entreprise</label>
   <input id="entreprise" type="text" formControlName="entreprise" >
   <label for="salaire">salaire</label>
-  <input id="salaire" type="text" formControlName="salaire" >     <!--button class="ui button" onclick="this.previousElementSibling.value = '***';">Anonymiser cette donnée</button-->
-
+  <input id="salaire" type="text" formControlName="salaire" >
 
   <button  class="ui button" type="submit">{{action}}</button>
 </form>
+
