@@ -14,7 +14,6 @@ export class ConnectionService {
 
 
   getConnection() {
-    console.log('sessionStorage.getItem(\'connection\') !== undefined)' + sessionStorage.getItem('connection'));
     return (sessionStorage.getItem('connection') !== null); }
 
   stockConnection(login: string) {

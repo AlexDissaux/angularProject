@@ -6,7 +6,11 @@ import {Alumnus} from '../../model/Alumnus';
 })
 export class FilterAlumnusPipe implements PipeTransform {
 
-  transform(alumnusArray: Alumnus[], searchValue: string): Alumnus[] {
+  transform(alumnusArray: Alumnus[], searchValue: string, optionValue: string): Alumnus[] {
+
+    if (optionValue && (optionValue !== 'all')) {
+      alumnusArray = alumnusArray.filter(e => e.option.includes(optionValue));
+    }
 
     if (searchValue) {
       searchValue = searchValue.toLowerCase();

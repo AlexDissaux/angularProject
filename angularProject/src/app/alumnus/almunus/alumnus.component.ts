@@ -5,6 +5,7 @@ import {DataUserService} from '../../service/dataUser.service';
 import {ConnectionService} from '../../login/services/connection.service';
 import {Router} from '@angular/router';
 import {ActionPerformedService} from '../service/actionPerformed.service';
+import {DataOptionService} from '../../service/dataOption.service';
 
 @Component({
   selector: 'app-alumnus',
@@ -15,16 +16,20 @@ export class AlumnusComponent implements OnInit {
 
   alumnus;
   searchValue;
+  optionValue;
+  options: string[];
 
   constructor(
     private alumnusService: AlumnusService,
     private connectionService: ConnectionService,
     private router: Router,
-    private actionPerformed: ActionPerformedService
+    private actionPerformed: ActionPerformedService,
+    private dataOption: DataOptionService
   ) { }
 
   ngOnInit() {
     this.alumnus = this.alumnusService.getAlumnus();
+    this.options = this.dataOption.getOptions();
   }
 
   isAuthorized() {
